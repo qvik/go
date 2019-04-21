@@ -1,3 +1,3 @@
-module github.com/qvik/golib
+module github.com/qvik/gokit
 
 go 1.12
