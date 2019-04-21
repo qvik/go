@@ -15,13 +15,7 @@ export GO111MODULE=on
 Install the library like so:
 
 ```sh
-go get -u "github.com/qvik/go"
-```
-
-Or just a subpackage, eg:
-
-```sh
-go get -u "github.com/qvik/go/rest"
+go get -u "github.com/qvik/golib"
 ```
 
 ## License
