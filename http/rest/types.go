@@ -11,15 +11,15 @@ type Response struct {
 	Message string `json:"message,omitempty"`
 }
 
-// Error defines the error type used for all errors from a RestHandler
-type Error struct {
+// HandlerError defines the error type used for all errors from a RestHandler
+type HandlerError struct {
 	Message    string
 	StatusCode int
 	Cause      error
 }
 
 // Error returns the error message
-func (e *Error) Error() string {
+func (e *HandlerError) Error() string {
 	return e.Message
 }
 
@@ -29,22 +29,22 @@ type Handler func(ctx context.Context,
 
 // NewUnauthorizedError indicates the client/user was not authorized to
 // perform this operation
-func NewUnauthorizedError(message string) *Error {
-	return &Error{StatusCode: http.StatusUnauthorized, Message: message}
+func NewUnauthorizedError(message string) *HandlerError {
+	return &HandlerError{StatusCode: http.StatusUnauthorized, Message: message}
 }
 
 // NewBadRequestError indicates the client sent an invalid request
-func NewBadRequestError(message string) *Error {
-	return &Error{StatusCode: http.StatusBadRequest, Message: message}
+func NewBadRequestError(message string) *HandlerError {
+	return &HandlerError{StatusCode: http.StatusBadRequest, Message: message}
 }
 
 // NewNotFoundError indicates the resource that was the target of this
 // request was not found
-func NewNotFoundError(message string) *Error {
-	return &Error{StatusCode: http.StatusNotFound, Message: message}
+func NewNotFoundError(message string) *HandlerError {
+	return &HandlerError{StatusCode: http.StatusNotFound, Message: message}
 }
 
 // NewForbiddenError indicates that it is forbidden to perform the request
-func NewForbiddenError(message string) *Error {
-	return &Error{StatusCode: http.StatusForbidden, Message: message}
+func NewForbiddenError(message string) *HandlerError {
+	return &HandlerError{StatusCode: http.StatusForbidden, Message: message}
 }
