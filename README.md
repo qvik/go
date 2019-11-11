@@ -1,16 +1,12 @@
 # Qvik's Golang Library
 
+[![GoDoc](https://godoc.org/github.com/qvik/gokit?status.svg)](https://godoc.org/github.com/qvik/gokit)
+
 This is [Qvik's](https://qvik.com) Golang kit. It aims to collect all the usual boring boiler plate code from projects into one place. It is not meant to be a framework or a specific library but more in the way of being scaffolding for new projects.
 
 See the godoc documentation for the library contents.
 
 ## Usage
-
-Enable the module support if planning to use Go1.11 modules:
-
-```sh
-export GO111MODULE=on
-```
 
 Install the library like so:
 
