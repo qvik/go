@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+
+	"github.com/pkg/errors"
 )
 
 // WriteJSONResponse is an utility method for returning a JSON response
@@ -17,7 +19,17 @@ func WriteJSONResponse(ctx context.Context, w http.ResponseWriter,
 		statusCode = http.StatusInternalServerError
 		apiResp := &Response{Status: "error"}
 
-		restError, ok := apiErr.(*HandlerError)
+		// Find the causing error to handle the return code properly
+		cause := apiErr
+		for {
+			c := errors.Cause(cause)
+			if c == nil || c == cause {
+				break
+			}
+			cause = c
+		}
+
+		restError, ok := cause.(*HandlerError)
 		if ok {
 			statusCode = restError.StatusCode
 			apiResp.Message = restError.Message
