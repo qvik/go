@@ -8,7 +8,8 @@ import (
 	"github.com/pkg/errors"
 )
 
-// WriteJSONResponse is an utility method for returning a JSON response
+// WriteJSONResponse is an utility method for writing a JSON response
+// into a net/http/ResponseWriter
 func WriteJSONResponse(ctx context.Context, w http.ResponseWriter,
 	response interface{}, apiErr error) {
 
